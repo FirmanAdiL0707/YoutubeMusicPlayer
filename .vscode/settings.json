@@ -1,0 +1,9 @@
+{
+  "java.dependency.packagePresentation": "hierarchical",
+  "cucumberautocomplete.steps": [
+    "demo/src/test/java/StepDefinition/*.java"
+  ],
+  "cucumberautocomplete.syncfeatures": "src/test/resources/Features/*feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "java.configuration.updateBuildConfiguration": "automatic"
+}

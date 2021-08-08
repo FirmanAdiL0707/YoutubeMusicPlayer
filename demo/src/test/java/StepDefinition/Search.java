@@ -1,30 +1,41 @@
 package StepDefinition;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import static org.junit.Assert.assertEquals;
 
-import io.cucumber.java.Before;
+import org.openqa.selenium.WebDriver;
+
+import PageObject.Search.SearchObject;
+import StepDefinition.Init.Infrastructure.Driver.Action;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class Search {
 
-    private WebDriver driver;
-
+    private SearchObject _searchObject;
+    
     public Search(){
-        
+        _searchObject = new SearchObject();
     }
 
-    @Before
-    public void LaunchTheBrowser(){
-        System.setProperty("webdriver.chrome.driver",
-          "D:/Formulatrix/Automation/Flo Automation/flotest/src/test/resources/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        //driver.manage().window().setSize(new Dimension(1536, 825));
-        //driver.navigate().to("http://raspberrypi:5005/");
+    @And("User click search button")
+    public void ClickSearchButton(){
+        _searchObject.ClikSearchButton();
     }
     
-    @Given("User navigated to music youtube")
-    public void SystemNavigatedByParam(){
-        driver.navigate().to("http://music.youtube.com");
+    @When("User input {string} on input search")
+    public void InputTextOnSearchInput(String input){
+        _searchObject.InputTextOnSearch(input);
+    }
+
+    @Then("Validate that {string} appears on Top Result")
+    public void IsTopResultContentAppears(String expected){
+        assertEquals(expected, _searchObject.ValidateMusicOnTopResult());
+    }
+
+    @And("User click list music on top result")
+    public void ClickListMusicOnTopResult(){
+        _searchObject.ClickPlayMusicOnTopResult();
     }
 }

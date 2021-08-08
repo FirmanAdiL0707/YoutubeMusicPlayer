@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/Features", 
 glue = { "StepDefinition" }, 
-tags = "@runProtocolManagement", 
+tags = "@run", 
 monochrome = true, 
 plugin = { "pretty", "html:target/reports" }
 )
